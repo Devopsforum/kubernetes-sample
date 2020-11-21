@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myapp-rc
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+        - name: nginx-image
+          image: nginx
+  replicas: 3
+  
+# in this above code from line 10 - 18 --> is meant to create the pod .
+
+# line 19 --> is meant for creating the replicas of the pods. 
+
+# to create the replication controller using hte this file, then execute the below command.
+kubectl create -f rc-definition-sample.yml
+
+# to view the number of replica sets created using the above code is found using the below command.
+kubectl get replicationcontroller -- it should be the number that we defined in the line 19 (as 3 in this case). 
+
+# to view the number of pods created, then use the below command.
+kubectl get pods --> ideally it should show the 3 pods created which has been defined in the replicas section.
