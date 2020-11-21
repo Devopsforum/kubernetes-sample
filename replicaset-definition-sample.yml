@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  type: front-end
+spec:
+  template:
+
+    metadata:
+      name: myapp-pod
+      type: front-end
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  
+  replicas: 3
+  selector: 
+    matchLabels:
+      type: front-end 
+  
+# Line 18 will be the considered as the major difference of the replicaset VS replicationcontroller, 
+# selector --> this section helps the pod to match the type that is mentioned in the definition file and also helps to differentiate the previously created pods 
+# from the one that is created using the replicaset definition file.
+
+# to create the replicaset, use the below updated command.
+kubectl create -f replicaset-definition-sample.yml
+
+# to view the list of replicaset created, use the below updated command.
+kubectl get replicaset 
+
+# to view the pods created using the above replicaset definition file, use the below command.
+kubectl get pods
