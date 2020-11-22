@@ -31,3 +31,12 @@ kubectl get replicaset
 
 # to view the pods created using the above replicaset definition file, use the below command.
 kubectl get pods
+
+# If you want to sclae up the pods using replicaset, then you need update the replicas value - to the desired number and execute the below command,
+kubectl replace -f replicaset-definition-sample.yml
+
+# the scale up can also be done using the below command,
+kubectl scale --replicas=6 -f replicaset-definition-sample.yml
+# Also you can run the below command if you desired to scale up the replicaset,
+kubectl scale --replicaset=6 <kind-mentioned-inthe-defition-file> <name-underthe-metadata(first-value)>
+kybectl scale --replicaset=6 replicaset myapp-replicaset
