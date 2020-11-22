@@ -1,0 +1,5 @@
+If you are seeing the status of the node in NOTREADY - then execute the below command, so that the pod network will be installed 
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+
+Command to check the kubelet errors. 
+journalctl -u kubelet
