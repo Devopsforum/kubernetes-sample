@@ -40,3 +40,6 @@ kubectl scale --replicas=6 -f replicaset-definition-sample.yml
 # Also you can run the below command if you desired to scale up the replicaset,
 kubectl scale --replicaset=6 <kind-mentioned-inthe-defition-file> <name-underthe-metadata(first-value)>
 kybectl scale --replicaset=6 replicaset myapp-replicaset
+
+# to edit the replica value, just edit the replicaset definition file using the below command.
+kubectl edit replicaset replicaset-definition.yml --> change the defined value of the replicas to the new value.
