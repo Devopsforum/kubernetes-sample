@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  labels:
+    app: myapp
+    type: frond-end
+spec:
+  selector:
+    matchLabels:
+      type: front-end
+  replicas: 3
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+          
+# to create the deployment use the below command,
+kubectl create -f <deployment-def.yaml-file>
+
+# to check deployments status
+kubectl get deployments
+
+kubectl get replicaset  --> when this deploymnet-def file is executed it will create a replicaset as well, with the name given in the metadata
+
+# creates the pods as well,
+kubectl get pods
+
+kubectl get all --> will give the commands and results(pods, replicaset,  deployment)
