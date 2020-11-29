@@ -1,0 +1,12 @@
+docker run -d --name=redis redis --> this will bring up the redis container using the redis image and its named as redis
+
+docker run -d --name=db postgres:9.4  --> this will bring up the postgres DB container, named as DB using the postgres image
+
+docker run -d --name=vote -p 5000:80 --link redis:redis voting-app --> this command links the redis container 
+with the voting app front end container(running on python)
+
+docker run -d --name=result -p 5001:80 --link db:db result-app --> this command links the postgres DB container 
+with the resulting app front end container(running on node JS)
+
+docker run -d --name=worker --link db:db --link redis:redis worker --> this command links the DB and redis for storing and showing the results from redis for 
+input and DB for output on front end
